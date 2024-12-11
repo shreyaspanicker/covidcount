@@ -1,47 +1,48 @@
 import Plot from "react-plotly.js";
 import { useCovidContext } from "../contexts/CovidContext";
+import React from "react";
 
 function LineChart() {
+  console.log("Line chart rendered");
   const { covidData, currentState } = useCovidContext();
   const stateData =
     currentState !== "India"
       ? covidData.India.states.find(each => each.state === currentState)
       : covidData.India;
 
-  console.log(stateData);
   return (
-    <div>
+    <>
       {stateData && (
         <Plot
           className="w-full"
           data={[
             {
-              x: ["2019", "2020", "2021", "2022", "2023", "2024"], // X-axis labels
-              y: [...stateData?.totalCases], // Y-axis values
+              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
+              y: [...stateData?.totalCases],
               type: "scatter",
               mode: "lines+markers",
               name: "Total Cases",
               line: { color: "blue" },
             },
             {
-              x: ["2019", "2020", "2021", "2022", "2023", "2024"], // X-axis labels
-              y: [...stateData?.activeCases], // Y-axis values
+              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
+              y: [...stateData?.activeCases],
               type: "scatter",
               mode: "lines+markers",
               name: "Active Cases",
               line: { color: "red" },
             },
             {
-              x: ["2019", "2020", "2021", "2022", "2023", "2024"], // X-axis labels
-              y: [...stateData?.recovered], // Y-axis values
+              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
+              y: [...stateData?.recovered],
               type: "scatter",
               mode: "lines+markers",
               name: "Recovered Cases",
               line: { color: "green" },
             },
             {
-              x: ["2019", "2020", "2021", "2022", "2023", "2024"], // X-axis labels
-              y: [...stateData?.deaths], // Y-axis values
+              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
+              y: [...stateData?.deaths],
               type: "scatter",
               mode: "lines+markers",
               name: "Death Cases",
@@ -49,27 +50,35 @@ function LineChart() {
             },
           ]}
           layout={{
-            title: `COVID-19 Statistics for ${currentState}`,
-            xaxis: { title: "Year" },
+            title: `Case Progression of ${currentState}`,
+            xaxis: {
+              title: "Year",
+            },
             yaxis: { title: "Number of Cases" },
             legend: {
-              x: 0.5, // Horizontal position (0: left, 1: right, 0.5: center)
-              y: -0.3, // Vertical position (1: top, 0: bottom, -0.2: below chart)
-              xanchor: "center", // Horizontal alignment of legend box
-              yanchor: "top", // Vertical alignment of legend box
-              orientation: "h", // "h" for horizontal, "v" for vertical
+              x: 0.5,
+              y: -0.3,
+              xanchor: "center",
+              yanchor: "top",
+              orientation: "h",
             },
             dragmode: false,
+            height: 500,
+            font: {
+              family: "Fira Sans",
+              size: 12,
+              color: "#444",
+            },
           }}
           config={{
-            displayModeBar: false, // Hides the mode bar
-            responsive: true, // Enable responsive mode
+            displayModeBar: false,
+            responsive: true,
           }}
-          style={{ width: "100%", height: "100%" }} // Adjusts the chart's container
+          style={{ width: "100%", height: "100%" }}
         />
       )}
-    </div>
+    </>
   );
 }
 
-export default LineChart;
+export default React.memo(LineChart);
