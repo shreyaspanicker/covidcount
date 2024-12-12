@@ -11,7 +11,6 @@ const bounds: LatLngBoundsExpression = [
 ];
 
 const MapComponent: React.FC = () => {
-  console.log("rendered");
   const { covidData } = useCovidContext();
 
   return (

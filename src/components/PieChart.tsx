@@ -1,15 +1,12 @@
 import React from "react";
 import Plot from "react-plotly.js";
 import { useCovidContext } from "../contexts/CovidContext";
+import getStateData from "../utils";
 
 const PieChart: React.FC = () => {
-  console.log("Pie chart rendered");
   const { covidData, currentState } = useCovidContext();
 
-  const stateData =
-    currentState !== "India"
-      ? covidData.India.states.find(each => each.state === currentState)
-      : covidData.India;
+  const stateData = getStateData(covidData, currentState);
 
   const data: Partial<Plotly.PieData>[] = [
     {
@@ -28,7 +25,14 @@ const PieChart: React.FC = () => {
   ];
 
   const layout: Partial<Plotly.Layout> = {
-    title: `Current Case Percentage of ${currentState}`,
+    title: {
+      text: `<b>Current Case Percentage in <br>${currentState}<b>`,
+      font: {
+        family: "Fira Sans",
+        size: 15,
+        color: "#444",
+      },
+    },
     height: 500,
     showlegend: true,
     legend: {

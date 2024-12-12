@@ -8,7 +8,7 @@ function Header() {
   };
 
   return (
-    <div className="sticky top-0 bg-white z-[500] py-5 shadow-sm px-10">
+    <div className="sticky top-0 bg-white z-[500] py-5 shadow-lg px-10">
       <header className="flex flex-row text-xl sm:text-3xl">
         <span className="text-[red]">Covid</span>
         <span className="text-black">Count</span>

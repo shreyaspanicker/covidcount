@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import data from "../data";
 
-interface StateData {
+export interface StateData {
   state: string;
   totalCases: number[];
   activeCases: number[];
@@ -11,7 +11,7 @@ interface StateData {
   longitude: number;
 }
 
-interface CovidData {
+export interface CovidData {
   India: {
     totalCases: number[];
     activeCases: number[];

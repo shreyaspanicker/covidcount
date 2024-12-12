@@ -1,14 +1,11 @@
 import Plot from "react-plotly.js";
 import { useCovidContext } from "../contexts/CovidContext";
 import React from "react";
+import getStateData from "../utils";
 
 function LineChart() {
-  console.log("Line chart rendered");
   const { covidData, currentState } = useCovidContext();
-  const stateData =
-    currentState !== "India"
-      ? covidData.India.states.find(each => each.state === currentState)
-      : covidData.India;
+  const stateData = getStateData(covidData, currentState);
 
   return (
     <>
@@ -50,7 +47,14 @@ function LineChart() {
             },
           ]}
           layout={{
-            title: `Case Progression of ${currentState}`,
+            title: {
+              text: `<b>Case Progression in <br>${currentState}<b>`,
+              font: {
+                family: "Fira Sans",
+                size: 15,
+                color: "#444",
+              },
+            },
             xaxis: {
               title: "Year",
             },
