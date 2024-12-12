@@ -19,7 +19,7 @@ function ChartsAndMaps() {
   }, []);
 
   const classes =
-    currentState !== "India" ? "flex justify-center items-center h-[calc(100vh-123px)]" : "";
+    currentState !== "India" ? "flex justify-center items-center lg:h-[calc(100vh-123px)]" : "";
 
   return (
     <div className={classes}>
