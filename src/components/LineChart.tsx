@@ -23,19 +23,19 @@ function LineChart() {
             },
             {
               x: ["2019", "2020", "2021", "2022", "2023", "2024"],
-              y: [...stateData?.activeCases],
-              type: "scatter",
-              mode: "lines+markers",
-              name: "Active Cases",
-              line: { color: "red" },
-            },
-            {
-              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
               y: [...stateData?.recovered],
               type: "scatter",
               mode: "lines+markers",
               name: "Recovered Cases",
               line: { color: "green" },
+            },
+            {
+              x: ["2019", "2020", "2021", "2022", "2023", "2024"],
+              y: [...stateData?.activeCases],
+              type: "scatter",
+              mode: "lines+markers",
+              name: "Active Cases",
+              line: { color: "red" },
             },
             {
               x: ["2019", "2020", "2021", "2022", "2023", "2024"],

@@ -16,11 +16,15 @@ const PieChart: React.FC = () => {
         stateData?.recovered[stateData?.recovered.length - 1] || 0,
         stateData?.deaths[stateData?.deaths.length - 1] || 0,
       ],
+      marker: {
+        colors: ["blue", "red", "green", "black"],
+      },
       labels: ["Total Cases", "Active Cases", "Recovered", "Deaths"],
       type: "pie",
       textinfo: "label+percent",
       hoverinfo: "label+percent",
       hole: 0.2,
+      sort: true,
     },
   ];
 
@@ -39,7 +43,7 @@ const PieChart: React.FC = () => {
       x: 0.5,
       y: -0.3,
       xanchor: "center",
-      yanchor: "top",
+      yanchor: "auto",
       orientation: "h",
     },
     font: {
